@@ -1,5 +1,10 @@
-import { Text } from "react-native";
+import { Text } from "../../../components/Text";
+import { AppLayout } from "../../../layouts/AppLayout";
 
 export const Home = () => {
-	return <Text>Home Page!</Text>;
+	return (
+		<AppLayout>
+			<Text.Medium>Home Page!</Text.Medium>
+		</AppLayout>
+	);
 };
