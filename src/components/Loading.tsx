@@ -1,3 +1,3 @@
-import { Text } from "./Text";
+import { Text } from "react-native";
 
-export const Loading = () => <Text.Bold>Carregando...</Text.Bold>;
+export const Loading = () => <Text>Carregando...</Text>;
