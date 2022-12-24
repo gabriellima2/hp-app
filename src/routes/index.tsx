@@ -2,6 +2,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { Icon } from "./components/Icon";
+
+import { HousesStack } from "../modules/houses/routes/stacks-routes";
 import { CharactersRoutes } from "../modules/characters/routes";
 
 import { bottomTabStyle } from "./styles/bottom-tab-style";
@@ -24,7 +26,7 @@ export const Routes = () => {
 				/>
 				<Tab.Screen
 					name="Houses"
-					component={CharactersRoutes}
+					component={HousesStack}
 					options={{
 						title: "Casas",
 						tabBarIcon: ({ focused }) => (
