@@ -10,7 +10,7 @@ export const CharactersStack = () => (
 		initialRouteName="Home"
 		screenOptions={{ headerShown: false }}
 	>
-		<Stack.Screen name={"Home"} component={Home} />
-		<Stack.Screen name={"Details"} component={Details} />
+		<Stack.Screen name="Home" component={Home} />
+		<Stack.Screen name="Details" component={Details} />
 	</Stack.Navigator>
 );
