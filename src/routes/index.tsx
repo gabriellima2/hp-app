@@ -1,40 +1,22 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import { Icon } from "./components/Icon";
-
-import { HousesStack } from "../modules/houses/routes/stacks-routes";
 import { CharactersRoutes } from "../modules/characters/routes";
 
-import { bottomTabStyle } from "./styles/bottom-tab-style";
-
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export const Routes = () => {
 	return (
 		<NavigationContainer>
-			<Tab.Navigator screenOptions={bottomTabStyle}>
-				<Tab.Screen
-					name="Characters"
+			<Stack.Navigator screenOptions={{ headerShown: false }}>
+				<Stack.Screen
+					name="home"
 					component={CharactersRoutes}
 					options={{
 						title: "Personagens",
-						tabBarIcon: ({ focused }) => (
-							<Icon name="users" focused={focused} />
-						),
 					}}
 				/>
-				<Tab.Screen
-					name="Houses"
-					component={HousesStack}
-					options={{
-						title: "Casas",
-						tabBarIcon: ({ focused }) => (
-							<Icon name="hat-wizard" focused={focused} />
-						),
-					}}
-				/>
-			</Tab.Navigator>
+			</Stack.Navigator>
 		</NavigationContainer>
 	);
 };

@@ -6,7 +6,6 @@ import {
 	Platform,
 	NativeModules,
 } from "react-native";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { themes } from "../styles/themes";
 
 interface AppLayoutProps {
@@ -21,15 +20,12 @@ export const AppLayout = ({
 	hasHorizontalSpacing,
 	...props
 }: AppLayoutProps) => {
-	const bottomTabBarHeight = useBottomTabBarHeight();
-
 	return (
 		<SafeAreaView style={styles.safe}>
 			<View
 				style={{
 					...styles.container,
 					paddingHorizontal: hasHorizontalSpacing ? 8 : 0,
-					paddingBottom: bottomTabBarHeight,
 					paddingTop: STATUSBAR_HEIGHT,
 				}}
 			>
