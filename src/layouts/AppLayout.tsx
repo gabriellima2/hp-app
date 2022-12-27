@@ -25,7 +25,7 @@ export const AppLayout = ({
 			<View
 				style={{
 					...styles.container,
-					paddingHorizontal: hasHorizontalSpacing ? 8 : 0,
+					paddingHorizontal: hasHorizontalSpacing ? 12 : 0,
 					paddingTop: STATUSBAR_HEIGHT,
 				}}
 			>
