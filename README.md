@@ -2,21 +2,17 @@
     Harry Potter App (Em Desenvolvimento)
 </h1>
 
-# Tecnologias
+Aplicativo que mostra os detalhes dos personagens de Harry Potter, baseando-se na casa escolhida.
 
-<p>Esta sendo usado as seguintes ferramentas:</p>
+Desenvolvi esse projeto para praticar Clean Architecture e TDD.
+
+<h2>Ferramentas</h2>
 
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.dev/)
 - [Typescript](https://www.typescriptlang.org/)
 - [React Navigation](https://reactnavigation.org/)
-- [HP-API](http://hp-api.herokuapp.com/)
-
-# Objetivos
-
-- Praticar React Native (Navegação e Consumo de API)
-- Aplicar Arquitetura Modular
-- Melhorar organização e código
+- [React Query](https://react-query-v3.tanstack.com/)
 
 # Rodando o projeto
 
