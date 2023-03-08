@@ -1,3 +1,3 @@
 export * from "./Paragraph";
 export * from "./Title";
-export * from "./Views";
+export * from "./views";
