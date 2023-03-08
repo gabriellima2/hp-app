@@ -1,3 +1,4 @@
+import { Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import {
 	useFonts,
@@ -8,7 +9,6 @@ import {
 } from "@expo-google-fonts/roboto";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { Loading } from "./src/components/Loading";
 import { Routes } from "./src/routes";
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
 		Roboto_700Bold,
 	});
 
-	if (!fontsLoaded) return <Loading />;
+	if (!fontsLoaded) return <Text>Carregando</Text>;
 
 	return (
 		<QueryClientProvider client={queryClient}>

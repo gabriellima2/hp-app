@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { CharactersRoutes } from "../modules/characters/routes";
+import { MakeHome } from "../core/main/factories/pages/make-home";
 
 const Stack = createStackNavigator();
 
@@ -11,9 +11,9 @@ export const Routes = () => {
 			<Stack.Navigator screenOptions={{ headerShown: false }}>
 				<Stack.Screen
 					name="home"
-					component={CharactersRoutes}
+					component={MakeHome}
 					options={{
-						title: "Personagens",
+						title: "Home",
 					}}
 				/>
 			</Stack.Navigator>
