@@ -6,7 +6,7 @@ import {
 	Platform,
 	NativeModules,
 } from "react-native";
-import { themes } from "../../../styles/themes";
+import { themes } from "@/styles/themes";
 
 interface AppLayoutProps {
 	children: ReactNode;

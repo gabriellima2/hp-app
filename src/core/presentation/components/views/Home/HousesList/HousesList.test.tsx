@@ -2,10 +2,10 @@ import { fireEvent, render } from "@testing-library/react-native";
 
 import { HousesList } from "./HousesList";
 
-import { mockNavigate } from "../../../../../../../jest-setup";
-import { listHouses } from "../../../../../../__mocks__";
+import { mockNavigate } from "@root/jest-setup";
+import { listHouses } from "@/__mocks__";
 
-import { houses } from "../../../../../utils/houses";
+import { houses } from "@/utils/houses";
 
 const HOUSE_HINT = "Vai mostrar os personagens de";
 

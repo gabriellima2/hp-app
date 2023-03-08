@@ -1,5 +1,5 @@
-import { Title, HousesList } from "../../components";
-import { AppLayout } from "../../layouts";
+import { Title, HousesList } from "@/core/presentation/components";
+import { AppLayout } from "@/core/presentation/layouts";
 
 export const Home = () => {
 	return (

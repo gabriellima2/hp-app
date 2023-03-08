@@ -1,5 +1,5 @@
 import { Text, TextProps, StyleSheet } from "react-native";
-import { themes } from "../../../styles/themes";
+import { themes } from "@/styles/themes";
 
 export const Title = (props: TextProps) => (
 	<Text style={[styles.title, props.style]}>{props.children}</Text>
