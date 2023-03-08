@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
+import { Title } from "../../components";
+import { AppLayout } from "../../layouts";
 
 export const Home = () => {
 	return (
-		<View>
-			<Text>Explore os personagens de Harry Potter</Text>
-		</View>
+		<AppLayout>
+			<Title>Explore os personagens de Harry Potter</Title>
+		</AppLayout>
 	);
 };
