@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { FlatList, ListRenderItemInfo } from "react-native";
+import { FlatList, ListRenderItemInfo, StyleSheet } from "react-native";
 
 import { Link } from "@/core/presentation/components/Link";
 import { houses } from "@/shared/utils/houses";
@@ -11,8 +11,10 @@ export const HousesList = () => {
 			<Link
 				to={{ name: "Details", params: { house: item.toLowerCase() } }}
 				accessibilityHint={`Vai mostrar os personagens de ${item}`}
+				style={styles.house}
+				textStyle={styles.house__name}
 			>
-				{item}
+				- {item}
 			</Link>
 		),
 		[]
@@ -23,6 +25,22 @@ export const HousesList = () => {
 			data={houses}
 			keyExtractor={keyExtractor}
 			renderItem={renderItem}
+			contentContainerStyle={styles.houses}
 		/>
 	);
 };
+
+const styles = StyleSheet.create({
+	houses: {
+		alignItems: "flex-start",
+	},
+	house: {
+		padding: 8,
+		marginTop: 8,
+	},
+	house__name: {
+		fontSize: 16,
+		fontWeight: "500",
+		opacity: 1,
+	},
+});
