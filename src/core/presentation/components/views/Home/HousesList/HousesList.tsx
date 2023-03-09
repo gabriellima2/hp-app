@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { FlatList, ListRenderItemInfo } from "react-native";
 
 import { Link } from "@/core/presentation/components/Link";
-import { houses } from "@/utils/houses";
+import { houses } from "@/shared/utils/houses";
 
 export const HousesList = () => {
 	const keyExtractor = useCallback((item: string) => item, []);

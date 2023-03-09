@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { MakeHome } from "../core/main/factories/pages/make-home";
-import type { StackParams } from "../@types/StackParams";
+import type { StackParams } from "../shared/@types/StackParams";
 
 const Stack = createStackNavigator<StackParams>();
 

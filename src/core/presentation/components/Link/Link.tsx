@@ -1,9 +1,9 @@
 import { TouchableOpacity, type TouchableOpacityProps } from "react-native";
 
-import { useNavigation } from "../../../../hooks/useNavigation";
+import { useNavigation } from "@/shared/hooks/useNavigation";
 
 import { Paragraph } from "../Paragraph";
-import type { StackNames, StackParams } from "@/@types/StackParams";
+import type { StackNames, StackParams } from "@/shared/@types/StackParams";
 
 interface LinkProps
 	extends Omit<TouchableOpacityProps, "onPress" | "accessibilityRole"> {
