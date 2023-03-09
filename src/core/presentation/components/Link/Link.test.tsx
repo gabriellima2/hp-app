@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react-native";
 
 import { Link } from "./Link";
-import { mockNavigate } from "../../../../../jest-setup";
+import { mockNavigate } from "@root/jest-setup";
 
 const LINK_TEXT = "Link";
 const SCREEN_NAME = "Details";

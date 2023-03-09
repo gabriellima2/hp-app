@@ -5,8 +5,6 @@ import { HousesList } from "./HousesList";
 import { mockNavigate } from "@root/jest-setup";
 import { listHouses } from "@/__mocks__";
 
-import { houses } from "@/utils/houses";
-
 const HOUSE_HINT = "Vai mostrar os personagens de";
 
 function renderHousesListComponent() {
@@ -16,8 +14,12 @@ function renderHousesListComponent() {
 describe("<Houses />", () => {
 	describe("Render", () => {
 		it("should render correctly", () => {
-			const { getByText } = renderHousesListComponent();
-			houses.map((house) => expect(getByText(house)).toBeTruthy());
+			const { findByText, getByAccessibilityHint } =
+				renderHousesListComponent();
+			listHouses((house) => {
+				expect(findByText(house)).toBeTruthy();
+				expect(getByAccessibilityHint(`${HOUSE_HINT} ${house}`)).toBeTruthy();
+			});
 		});
 	});
 	describe("Interactions", () => {
