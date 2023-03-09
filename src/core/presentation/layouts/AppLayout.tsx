@@ -14,10 +14,11 @@ interface AppLayoutProps {
 }
 
 const { StatusBarManager } = NativeModules;
-const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
+const STATUSBAR_HEIGHT =
+	Platform.OS === "ios" ? 32 : StatusBarManager.HEIGHT + 12;
 
 export const AppLayout = ({
-	hasHorizontalSpacing,
+	hasHorizontalSpacing = true,
 	...props
 }: AppLayoutProps) => {
 	return (
