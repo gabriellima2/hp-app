@@ -1,4 +1,9 @@
-import { TouchableOpacity, type TouchableOpacityProps } from "react-native";
+import {
+	StyleProp,
+	TextStyle,
+	TouchableOpacity,
+	type TouchableOpacityProps,
+} from "react-native";
 
 import { useNavigation } from "@/shared/hooks/useNavigation";
 
@@ -13,10 +18,11 @@ interface LinkProps
 			? undefined
 			: Partial<StackParams[StackNames]>;
 	};
+	textStyle?: StyleProp<TextStyle>;
 }
 
 export const Link = (props: LinkProps) => {
-	const { children, to, ...rest } = props;
+	const { children, to, textStyle, ...rest } = props;
 	const { navigate } = useNavigation();
 
 	return (
@@ -29,8 +35,9 @@ export const Link = (props: LinkProps) => {
 					: navigate(to.name as any)
 			}
 			accessibilityRole="link"
+			activeOpacity={0.8}
 		>
-			<Paragraph>{children}</Paragraph>
+			<Paragraph style={textStyle}>{children}</Paragraph>
 		</TouchableOpacity>
 	);
 };
