@@ -7,7 +7,7 @@ import {
 import { HttpClient, IHttpClient } from "@/core/domain/adapters/http-client";
 import { CharacterEntity } from "@/core/domain/entities/character-entities";
 
-import { HttpStatusCode } from "@/shared/utils/http-status-code";
+import { HttpStatusCode } from "@/shared/helpers/http-status-code";
 
 const character: CharacterEntity = {
 	id: "1",
