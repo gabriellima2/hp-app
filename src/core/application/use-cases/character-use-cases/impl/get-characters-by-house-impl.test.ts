@@ -28,13 +28,21 @@ class HttpClientImpl implements IHttpClient<CharacterEntity[]> {
 	): Promise<HttpClient.Response<CharacterEntity[]>> {
 		return new Promise((resolve) => {
 			const house = params.url.slice(params.url.lastIndexOf("/") + 1);
-			const charactersFinded = characters[house];
-			if (!charactersFinded)
+			if (!house)
 				return resolve({
 					ok: false,
 					statusCode: HttpStatusCode.notFound,
 					body: [],
 				});
+
+			const charactersFinded = characters[house];
+			if (!charactersFinded)
+				return resolve({
+					ok: false,
+					statusCode: HttpStatusCode.badRequest,
+					body: [],
+				});
+
 			resolve({
 				ok: true,
 				statusCode: HttpStatusCode.ok,
