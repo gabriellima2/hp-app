@@ -1,4 +1,4 @@
-import { CharacterEntity } from "../../entities";
+import { CharacterEntity } from "../../entities/character-entities";
 import { HttpClient } from "../../adapters/http-client";
 
 export interface IGetCharactersByHouse {
