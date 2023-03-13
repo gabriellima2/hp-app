@@ -31,7 +31,7 @@ export const Link = (props: LinkProps) => {
 			// TODO: Fix types
 			onPress={() =>
 				to.params
-					? navigate(to.name as any, to.params as any)
+					? navigate(to.name as any, { ...to.params })
 					: navigate(to.name as any)
 			}
 			accessibilityRole="link"
