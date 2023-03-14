@@ -1,7 +1,7 @@
 export type StackParams = {
 	Home: undefined;
-	Characters: undefined;
-	Details: { house: string };
+	Characters: { house: string };
+	Details: undefined;
 };
 
 export type StackNames = keyof StackParams;

@@ -2,7 +2,7 @@ import { render, waitFor } from "@testing-library/react-native";
 import * as ReactNavigation from "@react-navigation/native";
 import * as ReactQuery from "react-query";
 
-import { Details } from "./Details";
+import { Characters } from "./Characters";
 
 import { capitalizeFirstLetter } from "@/shared/utils/capitalize-first-letter";
 import type { CharacterEntity } from "@/core/domain/entities/character-entities";
@@ -47,8 +47,8 @@ function mockReturnHooks(params: MockReturnHooksParams) {
 	const { useQueryReturn, useRouteReturn } = params;
 
 	(ReactNavigation.useRoute as jest.Mock).mockReturnValue({
-		key: "Details",
-		name: "Details",
+		key: "Characters",
+		name: "Characters",
 		params: useRouteReturn.params,
 	});
 
@@ -57,11 +57,11 @@ function mockReturnHooks(params: MockReturnHooksParams) {
 		.mockImplementation(jest.fn().mockReturnValue(useQueryReturn));
 }
 
-function renderDetails() {
-	return render(<Details house="" />);
+function renderCharacters() {
+	return render(<Characters house="" />);
 }
 
-describe("<Details />", () => {
+describe("<Characters />", () => {
 	describe("Render", () => {
 		it("should render <Loading /> with isLoading true", async () => {
 			mockReturnHooks({
@@ -77,7 +77,7 @@ describe("<Details />", () => {
 					},
 				},
 			});
-			const { getByTestId, queryByText, queryByRole } = renderDetails();
+			const { getByTestId, queryByText, queryByRole } = renderCharacters();
 
 			expect(getByTestId("loading")).toBeTruthy();
 			await waitFor(() => expect(queryByRole("alert")).toBeFalsy());
@@ -100,7 +100,7 @@ describe("<Details />", () => {
 				},
 			});
 			const { queryByTestId, queryByText, findByRole, findByText } =
-				renderDetails();
+				renderCharacters();
 
 			expect(queryByTestId("loading")).toBeFalsy();
 			await waitFor(() => expect(findByRole("alert")).toBeTruthy());
@@ -123,7 +123,7 @@ describe("<Details />", () => {
 				},
 			});
 			const { queryByTestId, queryByText, queryByRole, findByText } =
-				renderDetails();
+				renderCharacters();
 
 			expect(queryByTestId("loading")).toBeFalsy();
 			await waitFor(() => expect(queryByRole("alert")).toBeFalsy());

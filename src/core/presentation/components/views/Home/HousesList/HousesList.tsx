@@ -9,7 +9,7 @@ export const HousesList = () => {
 	const renderItem = useCallback(
 		({ item }: ListRenderItemInfo<string>) => (
 			<Link
-				to={{ name: "Details", params: { house: item.toLowerCase() } }}
+				to={{ name: "Characters", params: { house: item.toLowerCase() } }}
 				accessibilityHint={`Vai mostrar os personagens de ${item}`}
 				style={styles.house}
 				textStyle={styles.house__name}

@@ -1,8 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { MakeHome } from "../core/main/factories/pages/make-home";
-import { MakeDetails } from "../core/main/factories/pages/make-details";
+import { MakeHome, MakeCharacters } from "../core/main/factories/pages";
 
 import type { StackParams } from "../shared/@types/StackParams";
 
@@ -13,7 +12,7 @@ export const Routes = () => {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ headerShown: false }}>
 				<Stack.Screen name="Home" component={MakeHome} />
-				<Stack.Screen name="Details" component={MakeDetails} />
+				<Stack.Screen name="Characters" component={MakeCharacters} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

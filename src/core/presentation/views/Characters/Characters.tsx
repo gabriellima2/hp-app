@@ -14,11 +14,11 @@ import { AppLayout } from "@/core/presentation/layouts";
 import { ValidateRouteParams } from "@/shared/hocs/ValidateRouteParams";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalize-first-letter";
 
-type DetailsProps = {
+type CharactersProps = {
 	house: string;
 };
 
-export const Details = ValidateRouteParams<DetailsProps>((props) => {
+export const Characters = ValidateRouteParams<CharactersProps>((props) => {
 	const { data, error, isLoading, isError } = useQuery(
 		"get-character-by-house",
 		() => makeGetCharacterByHouse().execute({ house: props.house })
