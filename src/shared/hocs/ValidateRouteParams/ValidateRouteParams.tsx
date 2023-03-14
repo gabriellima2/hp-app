@@ -1,7 +1,7 @@
 import { useRoute } from "@react-navigation/native";
 import type { ComponentType } from "react";
 
-import { TextError } from "../../components";
+import { TextError } from "@/core/presentation/components";
 
 export const ERROR_MESSAGE = "Valor obrigatório indefinido!";
 

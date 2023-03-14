@@ -11,7 +11,7 @@ import {
 } from "@/core/presentation/components";
 import { AppLayout } from "@/core/presentation/layouts";
 
-import { ValidateRouteParams } from "../../hocs/ValidateRouteParams";
+import { ValidateRouteParams } from "@/shared/hocs/ValidateRouteParams";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalize-first-letter";
 
 type DetailsProps = {
