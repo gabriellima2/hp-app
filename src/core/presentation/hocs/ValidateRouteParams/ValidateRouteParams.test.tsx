@@ -1,8 +1,13 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { render } from "@testing-library/react-native";
 import * as ReactNavigation from "@react-navigation/native";
 
-import { ValidateRouteParams } from "./";
+import { ERROR_MESSAGE, ValidateRouteParams } from "./";
+
+type Params = {
+	house: string;
+	character: string;
+};
 
 jest.mock("@react-navigation/native", () => ({
 	useRoute: jest.fn(),
@@ -16,30 +21,48 @@ afterAll(() => {
 	jest.clearAllMocks();
 });
 
-const COMPONENT_TEXT = "any_text";
-const Component = ValidateRouteParams(() => <Text>{COMPONENT_TEXT}</Text>);
+const Component = ValidateRouteParams<Params>((props) => (
+	<View>
+		<Text>{props.house} </Text>
+		<Text>{props.character} </Text>
+	</View>
+));
 
 describe("<ValidateRouteParams />", () => {
 	describe("Render", () => {
 		it("should render error with empty url params", () => {
+			const params: Params = {
+				house: "",
+				character: "",
+			};
 			(ReactNavigation.useRoute as jest.Mock).mockReturnValue({
 				key: "Details",
 				name: "Details",
-				params: { house: "", character: "" },
+				params,
 			});
-			const { queryByText, getByText } = render(<Component />);
-			expect(getByText("Error")).toBeTruthy();
-			expect(queryByText(COMPONENT_TEXT)).toBeFalsy();
+			const { queryByText, getByText } = render(
+				<Component character="" house="" />
+			);
+			expect(getByText(ERROR_MESSAGE)).toBeTruthy();
+			expect(queryByText(params.house)).toBeFalsy();
+			expect(queryByText(params.character)).toBeFalsy();
 		});
 		it("should render component passed with filled url params", () => {
+			const params: Params = {
+				house: "any_house",
+				character: "any_character",
+			};
 			(ReactNavigation.useRoute as jest.Mock).mockReturnValue({
 				key: "Details",
 				name: "Details",
-				params: { house: "any_house", character: "any_character" },
+				params,
 			});
-			const { queryByText, getByText } = render(<Component />);
-			expect(queryByText("Error")).toBeFalsy();
-			expect(getByText(COMPONENT_TEXT)).toBeTruthy();
+			const { queryByText, getByText } = render(
+				<Component character="" house="" />
+			);
+			expect(queryByText(ERROR_MESSAGE)).toBeFalsy();
+			expect(getByText(params.house)).toBeTruthy();
+			expect(getByText(params.character)).toBeTruthy();
 		});
 	});
 });

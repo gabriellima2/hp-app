@@ -3,16 +3,16 @@ import type { ComponentType } from "react";
 
 import { TextError } from "../../components";
 
+export const ERROR_MESSAGE = "Valor obrigatório indefinido!";
+
 export function ValidateRouteParams<P extends object>(
 	Component: ComponentType<P>
 ) {
 	return function HighOrder(props: P) {
 		const { params } = useRoute();
-		if (!params) return <TextError message="Error" />;
+		if (!params || Object.values(params).some((param) => !param))
+			return <TextError message={ERROR_MESSAGE} />;
 
-		const has = Object.values(params).some((param) => !param);
-		if (has) return <TextError message="Error" />;
-
-		return <Component {...props} />;
+		return <Component {...props} {...params} />;
 	};
 }
