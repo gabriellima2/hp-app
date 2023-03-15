@@ -31,7 +31,7 @@ describe("<Houses />", () => {
 					const houseOption = getByAccessibilityHint(`${HOUSE_HINT} ${house}`);
 					fireEvent.press(houseOption);
 
-					expect(mockNavigate).toHaveBeenCalledWith("Details", {
+					expect(mockNavigate).toHaveBeenCalledWith("Characters", {
 						house: house.toLowerCase(),
 					});
 				});
