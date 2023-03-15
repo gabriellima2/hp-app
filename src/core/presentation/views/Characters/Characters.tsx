@@ -1,13 +1,13 @@
-import { FlatList, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useQuery } from "react-query";
 
 import { makeGetCharacterByHouse } from "@/core/main/factories/application/use-cases/character-use-cases";
 
 import {
-	Paragraph,
 	Title,
 	TextError,
 	Loading,
+	CharacterList,
 } from "@/core/presentation/components";
 import { AppLayout } from "@/core/presentation/layouts";
 
@@ -28,16 +28,26 @@ export const Characters = ValidateRouteParams<CharactersProps>((props) => {
 		<AppLayout>
 			{isLoading && <Loading />}
 			{isError && <TextError message={(error as Error).message} />}
-			{data && (
+			{data ? (
 				<View>
-					<Title>Personagens de {capitalizeFirstLetter(props.house)}</Title>
-					<FlatList
-						data={data.body}
-						keyExtractor={({ id }) => id}
-						renderItem={({ item }) => <Paragraph>{item.name}</Paragraph>}
-					/>
+					<Title style={styles.title}>
+						Personagens de {capitalizeFirstLetter(props.house)}
+					</Title>
+					<CharacterList characters={data.body} />
 				</View>
+			) : (
+				<TextError
+					message={
+						"Ocorreu um erro! Por favor, verifique sua conexão e/ou tente novamente"
+					}
+				/>
 			)}
 		</AppLayout>
 	);
+});
+
+const styles = StyleSheet.create({
+	title: {
+		paddingBottom: 20,
+	},
 });

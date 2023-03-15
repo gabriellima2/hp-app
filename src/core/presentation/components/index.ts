@@ -3,3 +3,4 @@ export * from "./Title";
 export * from "./views";
 export * from "./Loading";
 export * from "./Errors";
+export * from "./Link";
