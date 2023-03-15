@@ -12,6 +12,7 @@ import type { StackNames, StackParams } from "@/shared/@types/StackParams";
 
 interface LinkProps
 	extends Omit<TouchableOpacityProps, "onPress" | "accessibilityRole"> {
+	variants?: "text" | "container";
 	to: {
 		name: StackNames;
 		params?: StackParams[StackNames] extends undefined
@@ -22,7 +23,7 @@ interface LinkProps
 }
 
 export const Link = (props: LinkProps) => {
-	const { children, to, textStyle, ...rest } = props;
+	const { children, to, textStyle, variants = "text", ...rest } = props;
 	const { navigate } = useNavigation();
 
 	return (
@@ -37,7 +38,10 @@ export const Link = (props: LinkProps) => {
 			accessibilityRole="link"
 			activeOpacity={0.8}
 		>
-			<Paragraph style={textStyle}>{children}</Paragraph>
+			{variants === "text" && (
+				<Paragraph style={textStyle}>{children}</Paragraph>
+			)}
+			{variants === "container" && <>{children}</>}
 		</TouchableOpacity>
 	);
 };
