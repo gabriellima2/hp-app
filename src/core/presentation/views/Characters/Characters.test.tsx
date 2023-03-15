@@ -24,6 +24,7 @@ type MockReturnHooksParams = {
 jest.mock("react-query");
 jest.mock("@react-navigation/native", () => ({
 	useRoute: jest.fn(),
+	useNavigation: () => ({ navigate: jest.fn() }),
 }));
 
 afterEach(() => {
