@@ -13,6 +13,7 @@ import { AppLayout } from "@/core/presentation/layouts";
 
 import { ValidateRouteParams } from "@/shared/hocs/ValidateRouteParams";
 import { capitalizeFirstLetter } from "@/shared/utils/capitalize-first-letter";
+import { UNEXPECTED_ERROR_MESSAGE } from "@root/src/shared/errors/error-messages/unexpected-error-message";
 
 type CharactersProps = {
 	house: string;
@@ -28,19 +29,16 @@ export const Characters = ValidateRouteParams<CharactersProps>((props) => {
 		<AppLayout>
 			{isLoading && <Loading />}
 			{isError && <TextError message={(error as Error).message} />}
-			{data ? (
-				<View>
+			{data && (
+				<View testID="character-list">
 					<Title style={styles.title}>
 						Personagens de {capitalizeFirstLetter(props.house)}
 					</Title>
 					<CharacterList characters={data.body} />
 				</View>
-			) : (
-				<TextError
-					message={
-						"Ocorreu um erro! Por favor, verifique sua conexão e/ou tente novamente"
-					}
-				/>
+			)}
+			{!isLoading && !isError && !data && (
+				<TextError message={UNEXPECTED_ERROR_MESSAGE} />
 			)}
 		</AppLayout>
 	);

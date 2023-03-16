@@ -4,7 +4,7 @@ import * as ReactQuery from "react-query";
 
 import { Characters } from "./Characters";
 
-import { capitalizeFirstLetter } from "@/shared/utils/capitalize-first-letter";
+import { UNEXPECTED_ERROR_MESSAGE } from "@root/src/shared/errors/error-messages/unexpected-error-message";
 import type { CharacterEntity } from "@/core/domain/entities/character-entities";
 
 type MockReturnHooksParams = {
@@ -42,7 +42,8 @@ const CHARACTER: CharacterEntity = {
 };
 const ERROR_MESSAGE = "any_error";
 const HOUSE = "gryffindor";
-const TITLE = `Personagens de ${capitalizeFirstLetter(HOUSE)}`;
+const CHARACTER_LIST_ID = "character-list";
+const LOADING_ID = "loading";
 
 function mockReturnHooks(params: MockReturnHooksParams) {
 	const { useQueryReturn, useRouteReturn } = params;
@@ -78,13 +79,12 @@ describe("<Characters />", () => {
 					},
 				},
 			});
-			const { getByTestId, queryByText, queryByRole } = renderCharacters();
+			const { getByTestId, queryByTestId, queryByText } = renderCharacters();
 
-			expect(getByTestId("loading")).toBeTruthy();
-			await waitFor(() => expect(queryByRole("alert")).toBeFalsy());
-			await waitFor(() => expect(queryByText(ERROR_MESSAGE)).toBeFalsy());
-			await waitFor(() => expect(queryByText(TITLE)).toBeFalsy());
-			await waitFor(() => expect(queryByText(CHARACTER.name)).toBeFalsy());
+			expect(getByTestId(LOADING_ID)).toBeTruthy();
+			expect(queryByText(ERROR_MESSAGE)).toBeFalsy();
+			expect(queryByTestId(CHARACTER_LIST_ID)).toBeFalsy();
+			expect(queryByText(UNEXPECTED_ERROR_MESSAGE)).toBeFalsy();
 		});
 		it("should render <Error /> with has request error", async () => {
 			mockReturnHooks({
@@ -100,14 +100,35 @@ describe("<Characters />", () => {
 					},
 				},
 			});
-			const { queryByTestId, queryByText, findByRole, findByText } =
-				renderCharacters();
+			const { queryByTestId, findByText, queryByText } = renderCharacters();
 
-			expect(queryByTestId("loading")).toBeFalsy();
-			await waitFor(() => expect(findByRole("alert")).toBeTruthy());
+			expect(queryByTestId(LOADING_ID)).toBeFalsy();
 			await waitFor(() => expect(findByText(ERROR_MESSAGE)).toBeTruthy());
-			await waitFor(() => expect(queryByText(TITLE)).toBeFalsy());
-			await waitFor(() => expect(queryByText(CHARACTER.name)).toBeFalsy());
+			await waitFor(() => expect(queryByTestId(CHARACTER_LIST_ID)).toBeFalsy());
+			await waitFor(() =>
+				expect(queryByText(UNEXPECTED_ERROR_MESSAGE)).toBeFalsy()
+			);
+		});
+		it("should render <Error /> with has unexpected error", async () => {
+			mockReturnHooks({
+				useQueryReturn: {
+					data: null,
+					error: null,
+					isError: false,
+					isLoading: false,
+				},
+				useRouteReturn: {
+					params: {
+						house: HOUSE,
+					},
+				},
+			});
+			const { queryByTestId, queryByText, findByText } = renderCharacters();
+
+			expect(queryByTestId(LOADING_ID)).toBeFalsy();
+			expect(queryByText(ERROR_MESSAGE)).toBeFalsy();
+			expect(queryByTestId(CHARACTER_LIST_ID)).toBeFalsy();
+			expect(findByText(UNEXPECTED_ERROR_MESSAGE)).toBeTruthy();
 		});
 		it("should render <CharacterList /> with successfully on request", async () => {
 			mockReturnHooks({
@@ -123,14 +144,14 @@ describe("<Characters />", () => {
 					},
 				},
 			});
-			const { queryByTestId, queryByText, queryByRole, findByText } =
-				renderCharacters();
+			const { queryByTestId, findByTestId, queryByText } = renderCharacters();
 
-			expect(queryByTestId("loading")).toBeFalsy();
-			await waitFor(() => expect(queryByRole("alert")).toBeFalsy());
+			expect(queryByTestId(LOADING_ID)).toBeFalsy();
 			await waitFor(() => expect(queryByText(ERROR_MESSAGE)).toBeFalsy());
-			await waitFor(() => expect(findByText(TITLE)).toBeTruthy());
-			await waitFor(() => expect(findByText(CHARACTER.name)).toBeTruthy());
+			await waitFor(() => expect(findByTestId(CHARACTER_LIST_ID)).toBeTruthy());
+			await waitFor(() =>
+				expect(queryByText(UNEXPECTED_ERROR_MESSAGE)).toBeFalsy()
+			);
 		});
 	});
 });
