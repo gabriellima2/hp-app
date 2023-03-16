@@ -20,9 +20,10 @@ export const CharacterListItem = (props: CharacterListItemProps) => {
 			variants="container"
 			to={{
 				name: "Details",
-				params: { character: name.toLowerCase() },
+				params: { id: name.toLowerCase() },
 			}}
-			accessibilityHint={`Detalhes de ${name}`}
+			accessibilityLabel={`Detalhes de ${name}`}
+			accessibilityHint={`Vai para tela de detalhes de ${name}`}
 			style={styles.character}
 		>
 			{image && !hasImageError ? (
