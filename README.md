@@ -26,6 +26,9 @@ Desenvolvi esse projeto para praticar Clean Architecture e TDD.
 - [Typescript](https://www.typescriptlang.org/)
 - [React Navigation](https://reactnavigation.org/)
 - [React Query](https://react-query-v3.tanstack.com/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [Expo Jest](https://docs.expo.dev/guides/testing-with-jest/)
+- [RNTL](https://testing-library.com/docs/react-native-testing-library/intro/)
 
 # Rodando o projeto
 
