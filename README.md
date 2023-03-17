@@ -1,10 +1,23 @@
 <h1 align="center">
-    Harry Potter App (Em Desenvolvimento)
+    Harry Potter App
 </h1>
 
 Aplicativo que mostra os detalhes dos personagens de Harry Potter, baseando-se na casa escolhida.
 
 Desenvolvi esse projeto para praticar Clean Architecture e TDD.
+
+<h2>Estrutura</h2>
+
+```bash
+--- src/core/
+	-- domain: Definição de lógicas e models reaproveitáveis em qualquer aplicação(Web, Mobile) e frameworks.
+	-- application: Implementação dos casos de usos especifícos para a aplicação.
+	-- infrastructure: Camada externa da aplicação. Faz uso de ferramentas de terceiros.
+	-- presentation: Toda a parte visual como Telas, Componentes etc..
+	-- main: Nesse caso, é para instânciar as classes das demais camadas. Utilizando o pattern Factory Method.
+	
+--- src/shared: Tudo que é reaproveitável/compartilhado por toda aplicação.
+```
 
 <h2>Ferramentas</h2>
 
@@ -33,4 +46,4 @@ $ yarn start || npm run start
 4. Escaneie o QRCode ou digite a URL informada
 ```
 
-<p align="center">Projeto esta sendo feito com 💙 por <a href="https://www.linkedin.com/in/gabriel-lima-860612236">Gabriel Lima</a></p>
+<p align="center">Projeto feito com 💙 por <a href="https://www.linkedin.com/in/gabriel-lima-860612236">Gabriel Lima</a></p>
