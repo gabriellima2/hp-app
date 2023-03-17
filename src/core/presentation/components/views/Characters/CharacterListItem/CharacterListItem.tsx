@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 import { ImageNotFound } from "@/core/presentation/components/ImageNotFound";
 import { Title } from "@/core/presentation/components/Title";
-import { Link } from "@/core/presentation/components/Link";
 
 import { CharacterEntity } from "@/core/domain/entities/character-entities";
 
@@ -16,16 +15,7 @@ export const CharacterListItem = (props: CharacterListItemProps) => {
 	const [hasImageError, setHasImageError] = useState(false);
 
 	return (
-		<Link
-			variants="container"
-			to={{
-				name: "Details",
-				params: { id: name.toLowerCase() },
-			}}
-			accessibilityLabel={`Detalhes de ${name}`}
-			accessibilityHint={`Vai para tela de detalhes de ${name}`}
-			style={styles.character}
-		>
+		<View testID="character" style={styles.character}>
 			{image && !hasImageError ? (
 				<Image
 					accessibilityLabel={`Imagem do ${name}`}
@@ -41,7 +31,7 @@ export const CharacterListItem = (props: CharacterListItemProps) => {
 				/>
 			)}
 			<Title style={styles.character__name}>{name}</Title>
-		</Link>
+		</View>
 	);
 };
 
